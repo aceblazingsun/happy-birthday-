@@ -546,21 +546,37 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!stickerBurstContainer) return;
     stickerBurstContainer.innerHTML = '';
 
-    // Positions spread around the screen quadrants and borders
-    const positions = [
-      { left: 6, top: 12, rotStart: -25, rotMid: 12, rotEnd: -6, size: 120, delay: 0 },
-      { left: 80, top: 14, rotStart: 22, rotMid: -10, rotEnd: 8, size: 125, delay: 0.1 },
-      { left: 4, top: 46, rotStart: -18, rotMid: 8, rotEnd: -4, size: 110, delay: 0.18 },
-      { left: 82, top: 48, rotStart: 25, rotMid: -14, rotEnd: 7, size: 120, delay: 0.25 },
-      { left: 8, top: 74, rotStart: -20, rotMid: 10, rotEnd: -8, size: 115, delay: 0.32 },
-      { left: 78, top: 76, rotStart: 18, rotMid: -8, rotEnd: 6, size: 120, delay: 0.4 },
-      { left: 22, top: 8, rotStart: -12, rotMid: 6, rotEnd: -3, size: 100, delay: 0.48 },
-      { left: 68, top: 8, rotStart: 16, rotMid: -7, rotEnd: 5, size: 105, delay: 0.54 },
-      { left: 16, top: 82, rotStart: -15, rotMid: 8, rotEnd: -5, size: 110, delay: 0.6 },
-      { left: 64, top: 82, rotStart: 20, rotMid: -12, rotEnd: 6, size: 115, delay: 0.66 },
-      { left: 46, top: 4, rotStart: 5, rotMid: -4, rotEnd: 2, size: 95, delay: 0.72 },
-      { left: 46, top: 85, rotStart: -8, rotMid: 6, rotEnd: -2, size: 100, delay: 0.78 }
+    const isMobile = window.innerWidth <= 820;
+
+    // Mobile positions calibrated to remain fully on-screen without edge clipping
+    const mobilePositions = [
+      { left: 6, top: 8, rotStart: -20, rotMid: 10, rotEnd: -6, size: 110, delay: 0 },
+      { left: 60, top: 9, rotStart: 18, rotMid: -8, rotEnd: 6, size: 112, delay: 0.1 },
+      { left: 5, top: 36, rotStart: -16, rotMid: 8, rotEnd: -4, size: 105, delay: 0.18 },
+      { left: 62, top: 38, rotStart: 20, rotMid: -10, rotEnd: 7, size: 108, delay: 0.25 },
+      { left: 6, top: 66, rotStart: -18, rotMid: 9, rotEnd: -5, size: 112, delay: 0.32 },
+      { left: 58, top: 68, rotStart: 16, rotMid: -8, rotEnd: 5, size: 115, delay: 0.4 },
+      { left: 32, top: 3, rotStart: -8, rotMid: 5, rotEnd: -2, size: 98, delay: 0.48 },
+      { left: 32, top: 78, rotStart: 12, rotMid: -6, rotEnd: 3, size: 102, delay: 0.56 }
     ];
+
+    // Desktop positions around widescreen margins
+    const desktopPositions = [
+      { left: 6, top: 12, rotStart: -25, rotMid: 12, rotEnd: -6, size: 135, delay: 0 },
+      { left: 78, top: 14, rotStart: 22, rotMid: -10, rotEnd: 8, size: 140, delay: 0.1 },
+      { left: 4, top: 46, rotStart: -18, rotMid: 8, rotEnd: -4, size: 125, delay: 0.18 },
+      { left: 80, top: 48, rotStart: 25, rotMid: -14, rotEnd: 7, size: 135, delay: 0.25 },
+      { left: 8, top: 74, rotStart: -20, rotMid: 10, rotEnd: -8, size: 130, delay: 0.32 },
+      { left: 76, top: 76, rotStart: 18, rotMid: -8, rotEnd: 6, size: 135, delay: 0.4 },
+      { left: 22, top: 8, rotStart: -12, rotMid: 6, rotEnd: -3, size: 120, delay: 0.48 },
+      { left: 68, top: 8, rotStart: 16, rotMid: -7, rotEnd: 5, size: 125, delay: 0.54 },
+      { left: 16, top: 82, rotStart: -15, rotMid: 8, rotEnd: -5, size: 125, delay: 0.6 },
+      { left: 64, top: 82, rotStart: 20, rotMid: -12, rotEnd: 6, size: 130, delay: 0.66 },
+      { left: 46, top: 4, rotStart: 5, rotMid: -4, rotEnd: 2, size: 115, delay: 0.72 },
+      { left: 46, top: 85, rotStart: -8, rotMid: 6, rotEnd: -2, size: 120, delay: 0.78 }
+    ];
+
+    const positions = isMobile ? mobilePositions : desktopPositions;
 
     positions.forEach((pos) => {
       const sticker = document.createElement('div');
@@ -572,11 +588,11 @@ document.addEventListener('DOMContentLoaded', () => {
       sticker.style.setProperty('--rot-start', `${pos.rotStart}deg`);
       sticker.style.setProperty('--rot-mid', `${pos.rotMid}deg`);
       sticker.style.setProperty('--rot-end', `${pos.rotEnd}deg`);
-      sticker.style.animationDelay = `${pos.delay}s, ${pos.delay + 0.75}s`;
+      sticker.style.animationDelay = `${pos.delay}s`;
 
       const img = document.createElement('img');
       img.src = 'assets/images/sticker.jpg';
-      img.alt = 'Aditya Celebration Sticker';
+      img.alt = 'Celebration Sticker';
       img.onerror = function() {
         if (!this.dataset.retry) {
           this.dataset.retry = '1';
@@ -586,10 +602,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       sticker.appendChild(img);
 
-      // Playful bounce on click
+      // Playful bounce on tap / click
       sticker.addEventListener('click', (e) => {
         e.stopPropagation();
-        sticker.style.transform = 'scale(1.28) rotate(0deg)';
+        sticker.style.transform = 'scale(1.25) rotate(0deg)';
         setTimeout(() => {
           sticker.style.transform = `scale(1) rotate(${pos.rotEnd}deg)`;
         }, 320);

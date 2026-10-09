@@ -1319,84 +1319,505 @@ html, body {
    ======================================================== */
 @media screen and (max-width: 820px) {
   :root {
-    --book-width: 96vw;
-    --book-height: 76vh;
+    --book-width: 94vw;
+    --book-height: 84dvh;
   }
 
   .top-logo {
     top: 10px;
-    gap: 10px;
+    gap: 12px;
   }
 
   .logo-title {
-    font-size: 13px;
+    font-size: 14px;
     letter-spacing: 0.12em;
   }
 
   .close-book-btn {
-    padding: 4px 10px;
-    font-size: 9px;
+    padding: 5px 12px;
+    font-size: 9.5px;
     letter-spacing: 0.1em;
   }
 
-  /* Pretext / External Cover on Mobile */
+  /* Pretext / External Hardcover on Mobile */
   .hardcover-book {
-    width: min(270px, 74vw);
-    max-height: min(380px, 55vh);
-    margin: 0 auto 12px auto;
+    width: min(280px, 78vw);
+    max-height: min(400px, 58vh);
+    margin: 0 auto 14px auto;
   }
 
   .cover-overlay {
-    padding: 16px 14px;
+    padding: 18px 16px;
+  }
+
+  .cover-header-tag {
+    font-size: 10px;
+    letter-spacing: 0.2em;
   }
 
   .cover-book-title {
-    font-size: clamp(24px, 5.5vw, 30px);
+    font-size: clamp(26px, 6.2vw, 34px);
+    line-height: 1.1;
   }
 
   .cover-recipient-sub {
-    font-size: 10px;
+    font-size: 13.5px;
   }
 
   .cover-quote {
-    font-size: 11.5px;
-    margin-bottom: 8px;
+    font-size: 12.5px;
+    margin-bottom: 10px;
   }
 
   .cover-divider {
-    margin: 0 auto 8px auto;
+    margin: 0 auto 10px auto;
   }
 
   .cover-author {
-    font-size: 9px;
+    font-size: 10px;
   }
 
   .cover-author strong {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .enterButton {
-    padding: 8px 22px;
-    font-size: 10px;
-    margin-bottom: 6px;
+    padding: 9px 24px;
+    font-size: 11px;
+    margin-bottom: 8px;
   }
 
   .audio-hint {
-    font-size: 10px;
+    font-size: 11px;
   }
 
-  /* Authentic 2-Page Book Spread on Mobile */
+  /* Stacked Keepsake Folio on Mobile Portrait */
   .book-stage {
     perspective: 2000px;
   }
 
   .book-container {
-    width: min(96vw, 760px);
-    height: min(78vh, 580px);
-    min-height: 440px;
-    max-height: 84vh;
-    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.75), 0 4px 14px rgba(0, 0, 0, 0.5);
+    width: min(94vw, 460px);
+    height: min(84dvh, 740px);
+    max-height: 88dvh;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.8), 0 4px 14px rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
     touch-action: pan-y;
+  }
+
+  .spread {
+    flex-direction: column !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .spread::-webkit-scrollbar {
+    display: none;
+  }
+
+  .page {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    min-height: auto !important;
+    overflow: visible !important;
+  }
+
+  .page-left {
+    border-radius: 6px 6px 0 0 !important;
+    border-right: none !important;
+    border-bottom: 2px solid var(--page-spine) !important;
+    box-shadow: 0 4px 14px -3px rgba(0, 0, 0, 0.16) !important;
+  }
+
+  .page-right {
+    border-radius: 0 0 6px 6px !important;
+    border-left: none !important;
+    border-top: 1px solid var(--page-border) !important;
+    box-shadow: inset 0 6px 12px -6px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  .page-inner {
+    padding: 22px 18px !important;
+    height: auto !important;
+    min-height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    overflow: visible !important;
+  }
+
+  /* Crystal-Clear, Elegant Typography */
+  .chapter-header {
+    margin-bottom: 14px !important;
+  }
+
+  .chapter-number {
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.22em !important;
+    margin-bottom: 6px !important;
+  }
+
+  .chapter-title {
+    font-size: clamp(22px, 5.5vw, 28px) !important;
+    font-weight: 500 !important;
+    line-height: 1.2 !important;
+    color: #0d0b09 !important;
+  }
+
+  .chapter-line {
+    width: 32px !important;
+    height: 1.5px !important;
+    margin-top: 8px !important;
+  }
+
+  .prose-content {
+    flex: none !important;
+    display: block !important;
+    justify-content: flex-start !important;
+  }
+
+  .prose-content p {
+    font-size: clamp(14.5px, 3.8vw, 16.5px) !important;
+    line-height: 1.62 !important;
+    color: #141210 !important;
+    margin-bottom: 14px !important;
+    text-rendering: optimizeLegibility;
+  }
+
+  .lead-paragraph {
+    font-size: clamp(17px, 4.2vw, 20px) !important;
+    line-height: 1.48 !important;
+    font-style: italic !important;
+    color: #0d0b09 !important;
+    margin-bottom: 14px !important;
+  }
+
+  .joy-paragraph {
+    font-size: clamp(15.5px, 3.9vw, 17.5px) !important;
+    line-height: 1.58 !important;
+    font-style: italic !important;
+    color: #141210 !important;
+    margin-bottom: 14px !important;
+  }
+
+  .highlight-quote {
+    font-size: clamp(15.5px, 3.9vw, 17.5px) !important;
+    line-height: 1.55 !important;
+    font-style: italic !important;
+    padding-left: 12px !important;
+    margin: 12px 0 14px 0 !important;
+    border-left: 2px solid var(--accent-orange) !important;
+  }
+
+  .subtle-note,
+  .tender-line,
+  .nostalgia-line {
+    font-size: clamp(14px, 3.6vw, 15.5px) !important;
+    line-height: 1.58 !important;
+    color: #4a423a !important;
+    font-style: italic !important;
+    margin-bottom: 12px !important;
+  }
+
+  /* Photos & Candids */
+  .photo-frame {
+    height: auto !important;
+    min-height: auto !important;
+    padding: 10px 0 !important;
+    justify-content: center !important;
+  }
+
+  .photo-container {
+    max-width: clamp(150px, 46vw, 210px) !important;
+    aspect-ratio: 4 / 4.8 !important;
+    margin: 0 auto !important;
+  }
+
+  .photo-caption {
+    font-size: clamp(13px, 3.2vw, 14.5px) !important;
+    line-height: 1.45 !important;
+    margin-top: 10px !important;
+    color: #554d46 !important;
+  }
+
+  .art-svg {
+    width: 60px !important;
+    height: 60px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .art-caption {
+    font-size: 11.5px !important;
+  }
+
+  .candid-polaroid {
+    max-width: clamp(160px, 48vw, 205px) !important;
+    padding: 8px 8px 10px 8px !important;
+    margin: 10px auto 14px auto !important;
+  }
+
+  .candid-tape {
+    width: 40px !important;
+    height: 10px !important;
+    top: -7px !important;
+  }
+
+  .candid-caption {
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+    margin-top: 6px !important;
+  }
+
+  /* Spread 5 Duo Polaroids */
+  .polaroid-duo {
+    display: flex !important;
+    gap: 12px !important;
+    justify-content: center !important;
+    margin: 10px 0 16px 0 !important;
+  }
+
+  .polaroid-duo .duo-card {
+    flex: 1 1 0 !important;
+    max-width: 145px !important;
+    padding: 6px 6px 8px 6px !important;
+  }
+
+  .polaroid-duo .candid-caption {
+    font-size: 11px !important;
+    line-height: 1.35 !important;
+    margin-top: 5px !important;
+  }
+
+  /* Spread 6: Soundtrack */
+  .playlist-heading {
+    font-size: clamp(18px, 4.5vw, 22px) !important;
+    margin-bottom: 4px !important;
+  }
+
+  .playlist-subtitle {
+    font-size: 13px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .vinyl-record {
+    width: 85px !important;
+    height: 85px !important;
+    margin: 0 auto 10px auto !important;
+  }
+
+  .vinyl-label {
+    width: 34px !important;
+    height: 34px !important;
+  }
+
+  .label-star {
+    font-size: 9px !important;
+  }
+
+  .label-text {
+    font-size: 8px !important;
+  }
+
+  .vinyl-controls-bar {
+    margin: 6px 0 12px 0 !important;
+  }
+
+  .vinyl-action-btn {
+    padding: 6px 18px !important;
+    font-size: 10.5px !important;
+    letter-spacing: 0.12em !important;
+  }
+
+  .vinyl-btn-icon {
+    font-size: 10.5px !important;
+  }
+
+  .track-list {
+    gap: 6px !important;
+    width: 100% !important;
+  }
+
+  .track-item {
+    padding: 6px 12px !important;
+    gap: 8px !important;
+    border-radius: 4px !important;
+  }
+
+  .track-play-icon {
+    font-size: 10px !important;
+  }
+
+  .track-name {
+    font-size: 12px !important;
+    font-weight: 500 !important;
+  }
+
+  .track-tag {
+    font-size: 11px !important;
+  }
+
+  .external-playlist-box {
+    margin-top: 8px !important;
+  }
+
+  .external-playlist-link {
+    padding: 5px 14px !important;
+    font-size: 10.5px !important;
+  }
+
+  /* Spread 6: The Wish */
+  .wish-emphasis {
+    font-size: clamp(17px, 4.2vw, 21px) !important;
+    line-height: 1.45 !important;
+    margin-bottom: 16px !important;
+  }
+
+  .candle-wrapper {
+    margin: 10px 0 18px !important;
+  }
+
+  .candle {
+    width: 12px !important;
+    height: 38px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .flame {
+    width: 12px !important;
+    height: 18px !important;
+    top: -22px !important;
+  }
+
+  .wish-action-btn {
+    padding: 8px 24px !important;
+    font-size: 12px !important;
+    border-radius: 24px !important;
+  }
+
+  .wish-affirmation {
+    font-size: 14px !important;
+    margin-top: 10px !important;
+  }
+
+  .signoff-box {
+    margin-top: 14px !important;
+  }
+
+  .signoff-prefix {
+    font-size: 13px !important;
+  }
+
+  .signoff-signature {
+    font-size: clamp(22px, 5.5vw, 26px) !important;
+  }
+
+  .book-closure-box {
+    margin-top: 14px !important;
+  }
+
+  .close-book-link-btn {
+    padding: 6px 16px !important;
+    font-size: 12.5px !important;
+  }
+
+  /* Page Number Footer */
+  .page-footer {
+    padding-top: 8px !important;
+  }
+
+  .page-number {
+    font-size: 11px !important;
+  }
+
+  /* Navigation Arrows & Bottom Info */
+  .navArrow {
+    width: 40px;
+    height: 40px;
+    background: rgba(18, 16, 14, 0.55);
+    border-radius: 50%;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+
+  .navArrow:before {
+    width: 24px;
+    height: 11px;
+  }
+
+  .navArrow.left {
+    left: 6px;
+  }
+
+  .navArrow.right {
+    right: 6px;
+  }
+
+  .bottom-left-info {
+    bottom: 10px;
+    left: 14px;
+    font-size: 10px;
+    max-width: 46vw;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .bottom-right-info {
+    bottom: 10px;
+    right: 14px;
+    gap: 10px;
+    font-size: 11px;
+  }
+
+  .sound-toggle-btn {
+    padding: 4px 10px;
+    font-size: 10.5px;
+    gap: 5px;
+  }
+
+  .page-indicator {
+    font-size: 10.5px;
+  }
+
+  /* Birthday Wish Modal on Mobile */
+  .wish-modal-card {
+    width: min(340px, 90vw);
+    padding: 28px 20px;
+  }
+
+  .wish-modal-title {
+    font-size: clamp(22px, 5.8vw, 28px);
+    line-height: 1.2;
+  }
+
+  .wish-modal-subtext {
+    font-size: 14px;
+    line-height: 1.55;
+    margin-bottom: 20px;
+  }
+
+  .wish-modal-action-btn {
+    padding: 9px 24px;
+    font-size: 11px;
+  }
+}
+
+/* Landscape Mode Adaptation (Phones Held Horizontally) */
+@media screen and (max-width: 920px) and (orientation: landscape) and (max-height: 560px) {
+  .top-logo {
+    top: 6px;
+  }
+
+  .logo-title {
+    font-size: 13px;
+  }
+
+  .book-container {
+    width: min(94vw, 860px) !important;
+    height: 86dvh !important;
   }
 
   .spread {
@@ -1405,10 +1826,9 @@ html, body {
   }
 
   .page {
-    flex: 1 1 50%;
-    min-width: 0;
-    height: 100%;
-    overflow: hidden;
+    flex: 1 1 50% !important;
+    height: 100% !important;
+    overflow: hidden !important;
   }
 
   .page-left {
@@ -1421,426 +1841,48 @@ html, body {
   .page-right {
     border-radius: 0 4px 4px 0 !important;
     border-left: 1px solid var(--page-border) !important;
+    border-top: none !important;
     box-shadow: inset 12px 0 16px -8px rgba(0, 0, 0, 0.14) !important;
   }
 
   .page-inner {
-    padding: clamp(12px, 2.5vh, 20px) clamp(8px, 2.2vw, 16px);
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow-y: auto;
-    overflow-x: hidden;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-
-  .page-inner::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* Typography Fluid Scaling */
-  .chapter-header {
-    margin-bottom: 8px;
-  }
-
-  .chapter-number {
-    font-size: clamp(8px, 1.8vw, 9.5px);
-    letter-spacing: 0.18em;
-    margin-bottom: 3px;
+    padding: 14px 18px !important;
+    height: 100% !important;
+    overflow-y: auto !important;
+    justify-content: flex-start !important;
   }
 
   .chapter-title {
-    font-size: clamp(14px, 3.6vw, 20px);
-    line-height: 1.15;
-  }
-
-  .chapter-line {
-    width: 22px;
-    height: 1px;
-    margin-top: 6px;
-  }
-
-  .prose-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    font-size: 18px !important;
   }
 
   .prose-content p {
-    font-size: clamp(10px, 2.3vw, 12.5px);
-    line-height: 1.42;
-    margin-bottom: 7px;
-  }
-
-  .lead-paragraph {
-    font-size: clamp(12px, 2.7vw, 14.5px) !important;
-    line-height: 1.35 !important;
-    margin-bottom: 7px !important;
-  }
-
-  .joy-paragraph {
-    font-size: clamp(10.5px, 2.4vw, 13px) !important;
-    line-height: 1.38 !important;
-    margin-bottom: 7px !important;
-  }
-
-  .highlight-quote {
-    font-size: clamp(11px, 2.4vw, 13px) !important;
-    line-height: 1.38 !important;
-    padding-left: 8px;
-    margin-top: 5px;
-    border-left-width: 1.5px;
-  }
-
-  .subtle-note,
-  .tender-line,
-  .nostalgia-line {
-    font-size: clamp(9.5px, 2.1vw, 11.5px) !important;
-    line-height: 1.38 !important;
+    font-size: 11.5px !important;
+    line-height: 1.45 !important;
     margin-bottom: 6px !important;
   }
 
-  /* Photo & Frame Scaling */
-  .photo-frame {
-    height: auto;
-    min-height: 65%;
-    justify-content: center;
-  }
-
-  .photo-container {
-    max-width: clamp(95px, 26vw, 145px);
-    aspect-ratio: 4 / 4.8;
-    margin: 0 auto;
-  }
-
-  .photo-caption {
-    font-size: clamp(9px, 2vw, 11px);
-    line-height: 1.35;
-    margin-top: 6px;
-  }
-
-  .art-svg {
-    width: 48px;
-    height: 48px;
-    margin-bottom: 6px;
-  }
-
-  .art-caption {
-    font-size: 9.5px;
-  }
-
-  /* Candid Polaroids */
-  .candid-polaroid {
-    max-width: clamp(95px, 25vw, 130px);
-    padding: 5px 5px 6px 5px;
-    margin: 4px auto 8px auto;
-  }
-
-  .candid-tape {
-    width: 32px;
-    height: 8px;
-    top: -5px;
-  }
-
-  .candid-caption {
-    font-size: 9px;
-    line-height: 1.3;
-    margin-top: 4px;
-  }
-
-  /* Duo Cards (Spread 5) */
-  .polaroid-duo {
-    gap: 6px;
-    margin: 4px 0 8px 0;
-    justify-content: center;
-  }
-
-  .polaroid-duo .duo-card {
-    max-width: clamp(68px, 18vw, 92px);
-    padding: 4px 4px 6px 4px;
-  }
-
-  .polaroid-duo .candid-caption {
-    font-size: 8px;
-    line-height: 1.25;
-    margin-top: 3px;
-  }
-
-  /* Soundtrack Page (Spread 6 Left) */
-  .playlist-heading {
-    font-size: clamp(12.5px, 3vw, 16px);
-    margin-bottom: 2px;
-  }
-
-  .playlist-subtitle {
-    font-size: 9.5px;
-    margin-bottom: 6px;
-  }
-
-  .vinyl-record {
-    width: clamp(56px, 14vw, 76px);
-    height: clamp(56px, 14vw, 76px);
-    margin-bottom: 6px;
-  }
-
-  .vinyl-label {
-    width: 24px;
-    height: 24px;
-  }
-
-  .label-star {
-    font-size: 7px;
-  }
-
-  .label-text {
-    font-size: 7px;
-  }
-
-  .vinyl-controls-bar {
-    margin: 3px 0 6px 0;
-  }
-
-  .vinyl-action-btn {
-    padding: 4px 11px;
-    font-size: 8.5px;
-    letter-spacing: 0.08em;
-    gap: 5px;
-  }
-
-  .vinyl-btn-icon {
-    font-size: 8.5px;
-  }
-
-  .track-list {
-    gap: 3px;
-  }
-
-  .track-item {
-    padding: 3px 6px;
-    gap: 5px;
-    border-radius: 3px;
-  }
-
-  .track-play-icon {
-    font-size: 8px;
-  }
-
-  .track-name {
-    font-size: 9.5px;
-  }
-
-  .track-tag {
-    font-size: 8px;
-  }
-
-  .external-playlist-box {
-    margin-top: 4px;
-  }
-
-  .external-playlist-link {
-    padding: 3px 8px;
-    font-size: 8.5px;
-  }
-
-  /* Wish & Candle Page (Spread 6 Right) */
-  .wish-emphasis {
-    font-size: clamp(12px, 2.8vw, 15px) !important;
-    margin-bottom: 6px !important;
-  }
-
-  .candle-wrapper {
-    margin: 4px 0 8px;
-  }
-
-  .candle {
-    width: 9px;
-    height: 28px;
-    margin-bottom: 10px;
-  }
-
-  .flame {
-    width: 9px;
-    height: 14px;
-    top: -16px;
-  }
-
-  .wish-action-btn {
-    padding: 5px 13px;
-    font-size: 9.5px;
-    border-radius: 16px;
-  }
-
-  .wish-affirmation {
-    font-size: 10.5px;
-    margin-top: 6px !important;
-  }
-
-  .signoff-box {
-    margin-top: 6px;
-  }
-
-  .signoff-prefix {
-    font-size: 10px;
-  }
-
-  .signoff-signature {
-    font-size: clamp(16px, 3.8vw, 20px);
-  }
-
-  .book-closure-box {
-    margin-top: 6px;
-  }
-
-  .close-book-link-btn {
-    padding: 3px 10px;
-    font-size: 10px;
-  }
-
-  /* Page Number Footer */
-  .page-footer {
-    padding-top: 4px;
-  }
-
-  .page-number {
-    font-size: 9.5px;
-  }
-
-  /* Navigation Arrows & Bottom Info */
-  .navArrow {
-    width: 36px;
-    height: 36px;
-    background: rgba(18, 16, 14, 0.45);
-    border-radius: 50%;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-  }
-
-  .navArrow:before {
-    width: 22px;
-    height: 10px;
-  }
-
-  .navArrow.left {
-    left: 4px;
-  }
-
-  .navArrow.right {
-    right: 4px;
-  }
-
-  .bottom-left-info {
-    bottom: 8px;
-    left: 12px;
-    font-size: 9px;
-    max-width: 44vw;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .bottom-right-info {
-    bottom: 8px;
-    right: 12px;
-    gap: 8px;
-    font-size: 10px;
-  }
-
-  .sound-toggle-btn {
-    padding: 3px 8px;
-    font-size: 9.5px;
-    gap: 4px;
-  }
-
-  .page-indicator {
-    font-size: 9.5px;
-  }
-
-  /* Wish Modal on Mobile */
-  .wish-modal-card {
-    width: min(330px, 88vw);
-    padding: 24px 18px;
-  }
-
-  .wish-modal-title {
-    font-size: clamp(20px, 5.5vw, 25px);
-  }
-
-  .wish-modal-subtext {
-    font-size: 13px;
-    margin-bottom: 16px;
-  }
-
-  .wish-modal-action-btn {
-    padding: 8px 22px;
-    font-size: 10px;
-  }
-
-  .popup-sticker {
-    max-width: 75px !important;
-    max-height: 75px !important;
-  }
-}
-
-/* Landscape Mode Adaptation (Phones Held Horizontally) */
-@media screen and (max-width: 920px) and (orientation: landscape) and (max-height: 540px) {
-  .top-logo {
-    top: 6px;
-  }
-
-  .logo-title {
-    font-size: 12px;
-  }
-
-  .book-container {
-    width: min(94vw, 840px);
-    height: 86vh;
-    min-height: unset;
-  }
-
-  .page-inner {
-    padding: 10px 14px;
-  }
-
-  .photo-container {
-    max-width: 110px;
-  }
-
-  .candid-polaroid {
-    max-width: 95px;
-    margin: 3px auto;
-  }
-
-  .prose-content p {
-    font-size: 10px;
-    line-height: 1.38;
-    margin-bottom: 5px;
-  }
-
   .lead-paragraph {
-    font-size: 12px !important;
-    margin-bottom: 5px !important;
+    font-size: 13.5px !important;
   }
 
-  .chapter-header {
-    margin-bottom: 5px;
+  .photo-container {
+    max-width: 120px !important;
   }
 
-  .chapter-title {
-    font-size: 16px;
+  .candid-polaroid {
+    max-width: 110px !important;
+    margin: 4px auto !important;
   }
 
   .vinyl-record {
-    width: 52px;
-    height: 52px;
-    margin-bottom: 4px;
+    width: 60px !important;
+    height: 60px !important;
   }
 
   .bottom-left-info,
   .bottom-right-info {
-    bottom: 4px;
+    bottom: 5px;
   }
 }
 
@@ -2052,7 +2094,7 @@ html, body {
 .sticker-burst-container {
   position: fixed;
   inset: 0;
-  z-index: 250;
+  z-index: 240;
   pointer-events: none;
   overflow: hidden;
 }
@@ -2061,25 +2103,27 @@ html, body {
   position: absolute;
   pointer-events: auto;
   cursor: pointer;
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
   background: #ffffff;
   padding: 5px;
   box-shadow: 
-    0 12px 30px rgba(0, 0, 0, 0.45),
-    0 2px 8px rgba(0, 0, 0, 0.25),
-    0 0 0 1px rgba(255, 255, 255, 0.95);
+    0 14px 35px rgba(0, 0, 0, 0.55),
+    0 3px 10px rgba(0, 0, 0, 0.3),
+    0 0 0 1.5px rgba(255, 255, 255, 0.95);
   user-select: none;
   -webkit-user-select: none;
   transform-origin: center center;
-  animation: stickerPopIn 0.75s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards,
-             stickerFloat 4s ease-in-out infinite alternate;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  opacity: 0;
+  animation: stickerPopAndFloat 4.2s ease-in-out infinite alternate;
+  animation-fill-mode: forwards;
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.25s ease;
 }
 
-.popup-sticker:hover {
-  transform: scale(1.15) rotate(0deg) !important;
-  box-shadow: 0 18px 40px rgba(200, 90, 40, 0.55), 0 0 0 2px var(--accent-orange);
+.popup-sticker:hover,
+.popup-sticker:active {
+  transform: scale(1.22) rotate(0deg) !important;
+  box-shadow: 0 18px 45px rgba(200, 90, 40, 0.6), 0 0 0 2px var(--accent-orange);
   z-index: 999;
 }
 
@@ -2088,30 +2132,29 @@ html, body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 7px;
 }
 
-@keyframes stickerPopIn {
+@keyframes stickerPopAndFloat {
   0% {
     opacity: 0;
-    transform: scale(0.1) rotate(var(--rot-start, -15deg)) translateY(60px);
+    transform: scale(0.1) rotate(var(--rot-start, -15deg)) translateY(40px);
   }
-  65% {
+  16% {
     opacity: 1;
-    transform: scale(1.15) rotate(var(--rot-mid, 8deg)) translateY(-10px);
+    transform: scale(1.14) rotate(var(--rot-mid, 8deg)) translateY(-8px);
   }
-  100% {
+  26% {
     opacity: 1;
     transform: scale(1) rotate(var(--rot-end, -4deg)) translateY(0);
   }
-}
-
-@keyframes stickerFloat {
-  0% {
-    transform: translateY(0) rotate(var(--rot-end, -4deg));
+  65% {
+    opacity: 1;
+    transform: scale(1) rotate(calc(var(--rot-end, -4deg) + 2.5deg)) translateY(-10px);
   }
   100% {
-    transform: translateY(-16px) rotate(calc(var(--rot-end, -4deg) + 3deg));
+    opacity: 1;
+    transform: scale(1) rotate(calc(var(--rot-end, -4deg) - 2deg)) translateY(6px);
   }
 }
 
