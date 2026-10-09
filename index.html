@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>In All Your Radiance • For Ritika Raj</title>
+  
+  <!-- Typography matching Canela Web and modern editorial print -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@200;300;400;500&family=Sacramento&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ambient Particles Background (React Bits) -->
+  <div id="particles-bg" class="particles-bg" aria-hidden="true"></div>
+
+  <!-- Audio Element (for custom MP3s) -->
+  <audio id="bgAudio" loop preload="auto">
+    <source id="audioSource" src="assets/audio/janib.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- Top Wordmark & Header Actions -->
+  <header class="top-logo" id="topHeader">
+    <span class="logo-title" id="logoTitle" title="Return to cover">In All Your Radiance</span>
+    <button id="closeBookBtn" class="close-book-btn hidden" aria-label="Close book and return to cover">
+      <span class="close-icon" aria-hidden="true">✕</span>
+      <span class="close-text">Close book</span>
+    </button>
+  </header>
+
+  <!-- Left / Right Navigation Arrows (HTWKR Style) -->
+  <button id="prevBtn" class="navArrow left" aria-label="Previous Page" data-clickable="true">
+    <span>Previous</span>
+  </button>
+  <button id="nextBtn" class="navArrow right" aria-label="Next Page" data-clickable="true">
+    <span>Next</span>
+  </button>
+
+  <!-- Pretext / Dedication Screen (Hardcover Book Presentation) -->
+  <div class="pretext" id="pretextScreen">
+    <div class="pretext-wrapper">
+      <div class="pretext-content">
+        
+        <!-- Hardcover Book with External Cover Image -->
+        <div class="hardcover-book" id="hardcoverBook" role="button" tabindex="0" aria-label="Open In All Your Radiance - Keepsake Memoir for Ritika Raj" title="Click to open book">
+          <!-- Book Spine 3D Crease -->
+          <div class="hardcover-spine"></div>
+          
+          <!-- Front Cover Content -->
+          <div class="hardcover-front">
+            <img src="assets/images/book external cover.jpg" alt="In All Your Radiance - Ritika Raj" class="cover-image" onerror="if(!this.dataset.retry){this.dataset.retry=1; this.src='images/book external cover.jpg';}">
+            
+            <div class="cover-overlay">
+              <div class="cover-header-tag">A Memoir • 2019 to Present</div>
+              <div class="cover-title-group">
+                <h1 class="cover-book-title">In All Your Radiance</h1>
+                <div class="cover-recipient-sub">A Keepsake for <strong>Ritika Raj</strong></div>
+                <p class="cover-quote">“May your path get clearer every time you take a step.”</p>
+                <div class="cover-divider"></div>
+                <div class="cover-author">
+                  <span>With gratitude & respect,</span>
+                  <strong class="cover-author-name">Aditya Kaundal</strong>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Gold Corner Accents -->
+            <div class="cover-corner top-left"></div>
+            <div class="cover-corner top-right"></div>
+            <div class="cover-corner bottom-left"></div>
+            <div class="cover-corner bottom-right"></div>
+          </div>
+          
+          <!-- Page edges thickness -->
+          <div class="hardcover-pages-edge"></div>
+        </div>
+
+        <button class="enterButton" id="openBookBtn" aria-label="Open keepsake book and begin soundtrack">
+          <span class="enter-icon">✦</span>
+          <span class="enter-text">Open book</span>
+        </button>
+
+        <p class="audio-hint">Click the book to open • Turn up your volume for music</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3D Book Container -->
+  <div class="book-stage" id="bookStage">
+    <div class="book-container" id="book">
+
+      <!-- SPREAD 1: Chapter One -->
+      <div class="spread active" data-spread="1">
+        <!-- Left Page: Visual / Photo -->
+        <div class="page page-left">
+          <div class="page-inner">
+            <div class="photo-frame">
+              <div class="photo-container">
+                <img src="assets/images/photo1.jpg" alt="Memory for Ritika" class="page-photo" onerror="if(!this.dataset.retry){this.dataset.retry=1; this.src='images/cover photo.jpg';} else {this.style.display='none'; this.nextElementSibling.style.display='flex';}">
+                <div class="photo-fallback">
+                  <div class="fallback-art">
+                    <svg viewBox="0 0 100 100" class="art-svg">
+                      <circle cx="50" cy="50" r="38" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.4"/>
+                      <polygon points="50,20 80,75 20,75" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.6"/>
+                      <circle cx="50" cy="50" r="4" fill="currentColor"/>
+                    </svg>
+                    <span class="art-caption">The Spark Inside</span>
+                  </div>
+                </div>
+              </div>
+              <p class="photo-caption">"A year filled with joy and success only."</p>
+            </div>
+            <div class="page-footer">
+              <span class="page-number">01</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Page: Editorial Text -->
+        <div class="page page-right">
+          <div class="page-inner">
+            <div class="chapter-header">
+              <span class="chapter-number">Chapter One</span>
+              <h2 class="chapter-title">The Horizon Ahead</h2>
+              <div class="chapter-line"></div>
+            </div>
+            <div class="prose-content">
+              <p class="lead-paragraph">Happy birthday, Ritika.</p>
+              <p>
+                I am sure the upcoming days are going to be the best of your life, filled with joy and success only.
+              </p>
+              <p>
+                Sometimes life moves fast and it is easy to overlook how much you carry and how far you have already come. Looking ahead, I am certain this coming chapter holds something truly special for you.
+              </p>
+              <p>
+                May your path get clearer every time you take a step forward into what is next.
+              </p>
+            </div>
+            <div class="page-footer">
+              <span class="page-number">02</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SPREAD 2: Chapter Two -->
+      <div class="spread" data-spread="2">
+        <!-- Left Page -->
+        <div class="page page-left">
+          <div class="page-inner">
+            <div class="photo-frame">
+              <div class="photo-container">
+                <img src="assets/images/photo2.jpg" alt="Art & Craft" class="page-photo" onerror="if(!this.dataset.retry){this.dataset.retry=1; this.src='images/IMG-20180922-WA0000.jpg';} else {this.style.display='none'; this.nextElementSibling.style.display='flex';}">
+                <div class="photo-fallback">
+                  <div class="fallback-art">
+                    <svg viewBox="0 0 100 100" class="art-svg">
+                      <path d="M 20,50 Q 50,15 80,50 Q 50,85 20,50 Z" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.5"/>
+                      <circle cx="50" cy="50" r="14" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.7"/>
+                      <circle cx="50" cy="50" r="2.5" fill="currentColor"/>
+                    </svg>
+                    <span class="art-caption">Evolve • Learn • Create</span>
+                  </div>
+                </div>
+              </div>
+              <p class="photo-caption">"Never lose that spark."</p>
+            </div>
+            <div class="page-footer">
+              <span class="page-number">03</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Page -->
+        <div class="page page-right">
+          <div class="page-inner">
+            <div class="chapter-header">
+              <span class="chapter-number">Chapter Two</span>
+              <h2 class="chapter-title">Keep The Fire Alive</h2>
+              <div class="chapter-line"></div>
+            </div>
+            <div class="prose-content">
+              <p>
+                I know how hard you try in everything you do. I see the quiet effort you pour into your days, even when no one is watching, and I hope you never lose that spark.
+              </p>
+              <p>
+                Whether it is art, studying, creating something, or crafting something, keep that fire alive always inside you.
+              </p>
+              <p class="joy-paragraph">
+                Be the ball of joy that you are, stay excited about things, and keep loving beautiful things. Just do not forget that you are beautiful too.
+              </p>
+              <p class="highlight-quote">
+                Evolve and keep broadening your horizon.
+              </p>
+            </div>
+            <div class="page-footer">
+              <span class="page-number">04</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SPREAD 3: Chapter Three -->
+      <div class="spread" data-spread="3">
+        <!-- Left Page -->
+        <div class="page page-left">
+          <div class="page-inner">
+            <div class="photo-frame">
+              <div class="photo-container">
+                <img src="assets/images/photo3.jpg" alt="Ritika's Memory" class="page-photo" onerror="if(!this.dataset.retry){this.dataset.retry=1; this.src='images/IMG-20200511-WA0022.jpg';} else {this.style.display='none'; this.nextElementSibling.style.display='flex';}">
+                <div class="photo-fallback">
+                  <div class="fallback-art">
+                    <svg viewBox="0 0 100 100" class="art-svg">
+                      <circle cx="50" cy="50" r="35" stroke="currentColor" stroke-width="1" stroke-dasharray="4 3" fill="none" opacity="0.6"/>
+                      <line x1="25" y1="50" x2="75" y2="50" stroke="currentColor" stroke-width="1.2" opacity="0.6"/>
+                      <line x1="50" y1="25" x2="50" y2="75" stroke="currentColor" stroke-width="1.2" opacity="0.6"/>
+                    </svg>
+                    <span class="art-caption">On Your Own Terms</span>
+                  </div>
+                </div>
+              </div>
+              <p class="photo-caption">"Truly beautiful, inside and out."</p>
+            </div>
+            <div class="page-footer">
+              <span class="page-number">05</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Page -->
+        <div class="page page-right">
+          <div class="page-inner">
+            <div class="chapter-header">
+              <span class="chapter-number">Chapter Three</span>
+              <h2 class="chapter-title">Just As You Are</h2>
+              <div class="chapter-line"></div>
+            </div>
+            <div class="prose-content">
+              <p>
+                You are beautiful just as you are. The radiance in your face and heart is unmistakable, and it has a way of warming everyone around you.
+              </p>
+              <p>
+                I was always starstruck whenever I saw you. Through all those video calls and our dates, I was always genuinely happy just looking at you.
+              </p>
+              <p>
+                I hope you realize this as well: you are truly, deeply beautiful, physically as well as mentally.
+              </p>
+              <p class="highlight-quote">
+                May you become easy on yourself mentally, live life to the fullest, and truly enjoy every moment.
+              </p>
+            </div>
+            <div class="page-footer">
+              <span class="page-number">06</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SPREAD 4: Chapter Four -->
+      <div class="spread" data-spread="4">
+        <!-- Left Page: Photo 4 -->
+        <div class="page page-left">
+          <div class="page-inner">
+            <div class="photo-frame">
+              <div class="photo-container">
+                <img src="assets/images/photo4.jpg" alt="Through the Years" class="page-photo" onerror="if(!this.dataset.retry){this.dataset.retry=1; this.src='images/IMG-20230507-WA0036.jpg';} else {this.style.display='none'; this.nextElementSibling.style.display='flex';}">
+                <div class="photo-fallback">
+                  <div class="fallback-art">
+                    <svg viewBox="0 0 100 100" class="art-svg">
+                      <polygon points="50,15 61,38 86,41 68,60 72,85 50,73 28,85 32,60 14,41 39,38" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.6"/>
+                      <circle cx="50" cy="50" r="6" fill="currentColor"/>
+                    </svg>
+                    <span class="art-caption">Timeless Memories</span>
+                  </div>
+                </div>
+              </div>
+              <p class="photo-caption">"You have always been a fighter."</p>
+            </div>
+            <div class="page-footer">
+              <span class="page-number">07</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Page: Photo 5 and Chapter Four -->
+        <div class="page page-right">
+          <div class="page-inner">
+            <div class="chapter-header">
+              <span class="chapter-number">Chapter Four</span>
+              <h2 class="chapter-title">Moments In Time</h2>
+              <div class="chapter-line"></div>
+            </div>
+            <div class="prose-content">
+              <p>
+                From 2019 up until now, you have always been a fighter. Through every turn and every challenge, you faced things with quiet strength and dignity.
+              </p>
+
+              <!-- Polaroid / Candid Frame for Photo 5 -->
+              <div class="candid-polaroid">
+                <div class="candid-tape"></div>
+                <div class="candid-image-wrap">
+                  <img src="assets/images/photo5.jpg" alt="Candid Memory" class="candid-photo" onerror="if(!this.dataset.retry){this.dataset.retry=1; this.src='images/Snapchat-662946831.jpg';} else {this.style.display='none';}">
+                </div>
+                <span class="candid-caption">The smiles that never fade ✦</span>
+              </div>
+
+              <p class="tender-line">
+                Always keep that strength inside you, along with all the candid laughs and memories that still bring a warm smile.
+              </p>
+            </div>
+            <div class="page-footer">
+              <span class="page-number">08</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SPREAD 5: Chapter Five -->
+      <div class="spread" data-spread="5">
+        <!-- Left Page: The Swing -->
+        <div class="page page-left">
+          <div class="page-inner">
+            <div class="photo-frame">
+              <div class="photo-container">
+                <img src="assets/images/swing.jpg" alt="Ritika on the Swing" class="page-photo" onerror="if(!this.dataset.retry){this.dataset.retry=1; this.src='images/swing.jpg';} else {this.style.display='none'; this.nextElementSibling.style.display='flex';}">
+                <div class="photo-fallback">
+                  <div class="fallback-art">
+                    <svg viewBox="0 0 100 100" class="art-svg">
+                      <circle cx="50" cy="50" r="32" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.5"/>
+                      <path d="M 30,30 Q 50,70 70,30" stroke="currentColor" stroke-width="1.2" fill="none"/>
+                    </svg>
+                    <span class="art-caption">Pure Joy</span>
+                  </div>
+                </div>
+              </div>
+              <p class="photo-caption">"Do things that you like more often. It suits you, the smile and the adrenaline."</p>
+            </div>
+            <div class="page-footer">
+              <span class="page-number">09</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Page: Mountain & Dress Up -->
+        <div class="page page-right">
+          <div class="page-inner">
+            <div class="chapter-header">
+              <span class="chapter-number">Chapter Five</span>
+              <h2 class="chapter-title">Do What You Love</h2>
+              <div class="chapter-line"></div>
+            </div>
+            <div class="prose-content">
+              <!-- Duo Polaroid Gallery -->
+              <div class="polaroid-duo">
+                <!-- Mountain Image -->
+                <div class="candid-polaroid duo-card">
+                  <div class="candid-tape"></div>
+                  <div class="candid-image-wrap duo-img-wrap">
+                    <img src="assets/images/mountain.jpg" alt="Mountains" class="candid-photo" onerror="if(!this.dataset.retry){this.dataset.retry=1; this.src='images/mountain.jpg';} else {this.style.display='none';}">
+                  </div>
+                  <span class="candid-caption">Travel more, it gives you dopamine and happiness beyond measure.</span>
+                </div>
+
+                <!-- Dress Up Image (No Caption) -->
+                <div class="candid-polaroid duo-card">
+                  <div class="candid-tape"></div>
+                  <div class="candid-image-wrap duo-img-wrap">
+                    <img src="assets/images/dress up more.jpg" alt="Dress Up" class="candid-photo" onerror="if(!this.dataset.retry){this.dataset.retry=1; this.src='images/dress up more.jpg';} else {this.style.display='none';}">
+                  </div>
+                </div>
+              </div>
+
+              <p class="tender-line">
+                Keep chasing the open horizons and holding onto every adventure that brings you genuine joy.
+              </p>
+            </div>
+            <div class="page-footer">
+              <span class="page-number">10</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SPREAD 6: Nostalgic Soundtrack & The Wish -->
+      <div class="spread" data-spread="6">
+        <!-- Left Page: The Nostalgic Player -->
+        <div class="page page-left playlist-page">
+          <div class="page-inner">
+            <div class="music-box">
+              <h3 class="playlist-heading">Nostalgic Soundtrack</h3>
+              <p class="playlist-subtitle">“All the songs we used to listen to...”</p>
+
+              <!-- Rotating Vinyl Graphic -->
+              <div class="vinyl-record" id="vinylDisc">
+                <div class="vinyl-grooves"></div>
+                <div class="vinyl-label">
+                  <span class="label-star">✦</span>
+                  <span class="label-text">Ritika</span>
+                </div>
+              </div>
+
+              <!-- Dedicated Play / Pause Option on Vinyl Page -->
+              <div class="vinyl-controls-bar">
+                <button id="vinylPlayPauseBtn" class="vinyl-action-btn" aria-label="Pause or play soundtrack">
+                  <span id="vinylPlayPauseIcon" class="vinyl-btn-icon">❚❚</span>
+                  <span id="vinylPlayPauseText">Pause music</span>
+                </button>
+              </div>
+
+              <!-- Track Selector (Dynamically populated from PLAYLIST in script.js) -->
+              <div class="track-list" id="trackList"></div>
+
+              <!-- Optional External Playlist Link (Spotify/YouTube/Apple Music) -->
+              <div class="external-playlist-box" id="externalPlaylistContainer">
+                <a href="" target="_blank" rel="noopener" id="externalPlaylistLink" class="external-playlist-link hidden">
+                  <span class="music-note-symbol">🎧</span>
+                  <span id="externalPlaylistText">Open Our Playlist on Spotify ↗</span>
+                </a>
+              </div>
+            </div>
+            <div class="page-footer">
+              <span class="page-number">11</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Page: The Final Wish & Birthday Candle -->
+        <div class="page page-right">
+          <div class="page-inner">
+            <div class="chapter-header">
+              <span class="chapter-number">Epilogue</span>
+              <h2 class="chapter-title">The Wish</h2>
+              <div class="chapter-line"></div>
+            </div>
+            <div class="prose-content final-wish-prose">
+              <p class="subtle-note">
+                I only have gratitude and respect for who you are. It might seem overkill to build something like this for your birthday because I have never done this before. I do not expect a reaction or anything; I wanted to do this so I did it.
+              </p>
+              <p class="nostalgia-line">
+                All the songs we used to listen to are here to bring back that nostalgic feeling.
+              </p>
+              <p class="wish-emphasis">
+                May you live a great life with all the happiness in the world.
+              </p>
+
+              <!-- Interactive Candle Box -->
+              <div class="candle-wrapper">
+                <div class="candle" id="birthdayCandle">
+                  <div class="wick"></div>
+                  <div class="flame" id="candleFlame"></div>
+                </div>
+                <button id="wishBtn" class="wish-action-btn">
+                  Make a Wish 🎂
+                </button>
+                <p id="wishAffirmation" class="wish-affirmation hidden">
+                  May every wish of yours take flight this year ✨
+                </p>
+              </div>
+
+              <div class="signoff-box">
+                <span class="signoff-prefix">Always,</span>
+                <span class="signoff-signature">Aditya Kaundal</span>
+              </div>
+
+              <div class="book-closure-box">
+                <button id="finalCloseBookBtn" class="close-book-link-btn" aria-label="Close book and return to cover">
+                  <span class="closure-icon">📖</span>
+                  <span>Close book ✦</span>
+                </button>
+              </div>
+            </div>
+            <div class="page-footer">
+              <span class="page-number">12</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom Left Attribution -->
+  <div class="bottom-left-info">
+    <span>In All Your Radiance • For <strong>Ritika Raj</strong></span>
+  </div>
+
+  <!-- Bottom Right Sound & Page Tracker -->
+  <div class="bottom-right-info">
+    <button id="soundToggleBtn" class="sound-toggle-btn" aria-label="Toggle ambient soundtrack" title="Pause or resume audio">
+      <span class="sound-wave-icon" id="soundIcon" aria-hidden="true">❚❚</span>
+      <span id="soundLabel">Pause music</span>
+    </button>
+    <div class="page-indicator" aria-live="polite" aria-atomic="true">
+      <span id="currentPageNum">1</span> / <span id="totalPagesNum">6</span>
+    </div>
+  </div>
+
+  <!-- Birthday Wish Pop-up Modal -->
+  <div id="wishModal" class="wish-modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="wish-modal-backdrop" id="wishModalBackdrop"></div>
+    <div class="wish-modal-card">
+      <button id="closeWishModalBtn" class="wish-modal-close" aria-label="Close message">✕</button>
+      <div class="wish-modal-badge">✦ A Special Wish ✦</div>
+      <h2 class="wish-modal-title">I wish you a very happy birthday</h2>
+      <div class="wish-modal-divider"></div>
+      <p class="wish-modal-subtext">
+        May your days ahead be filled with boundless joy, peace, and all the radiance in the world.
+      </p>
+      <button id="confirmWishBtn" class="wish-modal-action-btn">
+        <span>Thank you ✦</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Container for Animated Pop-up Stickers -->
+  <div id="stickerBurstContainer" class="sticker-burst-container" aria-hidden="true"></div>
+
+  <script src="script.js"></script>
+  <script type="module" src="particles-bg.js"></script>
+</body>
+</html>
